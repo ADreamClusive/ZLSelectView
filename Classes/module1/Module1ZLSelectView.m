@@ -1,12 +1,12 @@
 //
-//  ZLSelectView.m
+//  Module1ZLSelectView.m
 //
 //  Created by Jiaozl on 10/11/2017.
 //  Copyright © 2017 Jiaozl. All rights reserved.
 //
 
-#import "ZLSelectView.h"
-#define ZLSelectViewBtnFlag 100
+#import "Module1ZLSelectView.h"
+#define Module1ZLSelectViewBtnFlag 100
 
 #define kCOLOR_WITH_HEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
 #define ZLCommonColor kCOLOR_WITH_HEX(0xbfa97f)
@@ -16,7 +16,7 @@
 
 
 
-@interface ZLSelectView()
+@interface Module1ZLSelectView()
 
 // 按钮的父视图
 @property (nonatomic, strong) UIView *bgView;
@@ -31,7 +31,7 @@
 
 
 
-@implementation ZLSelectView
+@implementation Module1ZLSelectView
 
 - (UIView *)bgView {
     if(!_bgView) {
@@ -84,29 +84,29 @@
         [btn setTitleColor:ZLCommonColor forState:UIControlStateNormal];
         [btn setTitleColor:ZLSelectedColor forState:UIControlStateSelected];
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-        btn.tag = ZLSelectViewBtnFlag + i;
+        btn.tag = Module1ZLSelectViewBtnFlag + i;
         [btn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.bgView addSubview:btn];
     }
     
-    UIButton *oldBtn = [self.bgView viewWithTag:(self.selectedIndex + ZLSelectViewBtnFlag)];
+    UIButton *oldBtn = [self.bgView viewWithTag:(self.selectedIndex + Module1ZLSelectViewBtnFlag)];
     self.selectedLineView.center = CGPointMake(oldBtn.frame.origin.x+oldBtn.bounds.size.width/2, self.selectedLineView.center.y);
     oldBtn.selected = YES;
 }
 
 - (void) buttonAction:(UIButton *)sender {
-    if(self.selectedIndex != sender.tag - ZLSelectViewBtnFlag) {
-        UIButton *oldBtn = [self.bgView viewWithTag:(self.selectedIndex + ZLSelectViewBtnFlag)];
+    if(self.selectedIndex != sender.tag - Module1ZLSelectViewBtnFlag) {
+        UIButton *oldBtn = [self.bgView viewWithTag:(self.selectedIndex + Module1ZLSelectViewBtnFlag)];
         oldBtn.selected = NO;
         [oldBtn setTitleColor:ZLCommonColor forState:UIControlStateNormal];
         
         sender.selected = YES;
-        self.selectedIndex = sender.tag - ZLSelectViewBtnFlag;
+        self.selectedIndex = sender.tag - Module1ZLSelectViewBtnFlag;
         [UIView animateWithDuration:0.3 animations:^{
             self.selectedLineView.center = CGPointMake(sender.frame.origin.x+sender.bounds.size.width/2, self.selectedLineView.center.y);
         }];
         
-        [self.delegateOfZLSelectView ZLSelectViewDidSelect:self.selectedIndex];
+        [self.delegateOfModule1ZLSelectView Module1ZLSelectViewDidSelect:self.selectedIndex];
     }
 }
 

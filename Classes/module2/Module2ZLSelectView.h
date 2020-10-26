@@ -1,5 +1,5 @@
 //
-//  ZLSelectView.h
+//  Module2ZLSelectView.h
 //
 //  Created by Jiaozl on 10/11/2017.
 //  Copyright © 2017 Jiaozl. All rights reserved.
@@ -7,15 +7,15 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ZLSelectViewDelegate
+@protocol Module2ZLSelectViewDelegate
 
-- (void)ZLSelectViewDidSelect:(NSUInteger)index;
+- (void)Module2ZLSelectViewDidSelect:(NSUInteger)index;
 
 @end
 
-@interface ZLSelectView : UIView
+@interface Module2ZLSelectView : UIView
 
-@property (nonatomic, assign) id<ZLSelectViewDelegate> delegateOfZLSelectView;
+@property (nonatomic, assign) id<Module2ZLSelectViewDelegate> delegateOfModule2ZLSelectView;
 
 // 通过名字数组初始化
 - (id)initWithFrame:(CGRect)frame titles:(NSArray *)titleArray;
